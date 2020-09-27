@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import HomePage from './components/HomePage';
+import Beer from './components/Beer'
 import { Switch, Route } from 'react-router-dom';
 import Axios from 'axios';
 import Beers from './components/Beers';
@@ -27,8 +27,10 @@ function App() {
   return (
     <div>
       <Switch>
+        {/* Pass beers down as props */}
         <Route exact path='/' render={props => <HomePage {...props} />} />
         <Route exact path='/beers' render={props => <Beers {...props} beers={beers} dataReady={dataReady} />} />
+        <Route exact path='/beers/:id' render={props => <Beer {...props} beers={beers} />} />
       </Switch>
     </div>
   );
