@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Header from "./Header";
 function Beers(props) {
   const showBeers = () => {
     return props.beers.map((eachBeer) => {
@@ -17,6 +17,7 @@ function Beers(props) {
   console.log(props.beers);
   return (
     <div>
+      <Header />
       {props.dataReady ? showBeers() : "Loading..."}
       {/* {showBeers()} */}
     </div>
