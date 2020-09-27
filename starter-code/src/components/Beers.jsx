@@ -1,5 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import Header from "./Header";
+import { Link } from "react-router-dom";
+
+// Get info by beer ID & display the result in a new component
 function Beers(props) {
   const showBeers = () => {
     return props.beers.map((eachBeer) => {
