@@ -3,6 +3,7 @@ import React from "react";
 const Beer = (props) => {
   let beerCode = props.match.params.id;
   let beerObj = props.beers.find((eachBeer) => beerCode === eachBeer._id);
+
   return (
     <div>
       <img alt="what the beer looks like" />
