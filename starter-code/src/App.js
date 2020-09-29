@@ -5,8 +5,9 @@ import Beer from './components/Beer'
 import { Switch, Route } from 'react-router-dom';
 import Axios from 'axios';
 import Beers from './components/Beers';
+import RandomBeer from './components/RandomBeer';
 
-let baseUrl = "https://ih-beers-api2.herokuapp.com/beers/"
+let baseUrl = "https://ih-beers-api2.herokuapp.com/beers"
 
 function App() {
   const [dataReady, setDataReady] = useState(false);
@@ -19,17 +20,19 @@ function App() {
   const getAllBeers = () => {
     Axios.get(baseUrl)
       .then(response => {
-        setBeers(response.data)// save the array of the data instead of the whole object response
+        setBeers(response.data) // save the array of the data instead of the whole response
         setDataReady(true)
       }).catch(err => console.log(err))
   }
 
+
   return (
     <div>
       <Switch>
-        {/* Pass beers down as props */}
         <Route exact path='/' render={props => <HomePage {...props} />} />
-        <Route exact path='/beers' render={props => <Beers {...props} beers={beers} dataReady={dataReady} />} />
+        <Route exact path='/beers' render={props => <Beers {...props} beers={beers}
+          dataReady={dataReady} />} />
+        <Route exact path='/beers/random' render={props => <RandomBeer {...props} />} />
         <Route exact path='/beers/:id' render={props => <Beer {...props} beers={beers} />} />
       </Switch>
     </div>

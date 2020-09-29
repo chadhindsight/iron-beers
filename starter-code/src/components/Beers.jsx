@@ -7,7 +7,7 @@ function Beers(props) {
     return props.beers.map((eachBeer) => {
       return (
         <Link
-          style={{ textDecoration: "none" }}
+          style={{ textDecoration: "none", color: "black" }}
           to={`/beers/${eachBeer._id}`}
           key={eachBeer._id}
         >
@@ -26,6 +26,9 @@ function Beers(props) {
   return (
     <div>
       <Header />
+      <Link to={`/beers/random`}>
+        <button>Get a Random Beer</button>
+      </Link>
       {props.dataReady ? showBeers() : "Loading..."}
       {/* {showBeers()} */}
     </div>
