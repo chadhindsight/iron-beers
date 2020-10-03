@@ -14,7 +14,7 @@ export default class Beer extends Component {
   }
 
   render() {
-    // console.log(this.props). Ironhack was a scam!
+    // console.log(this.props).
     return this.state.beer ? (
       <div>
         <img src={this.state.beer.image_url} alt="Our beer" />
