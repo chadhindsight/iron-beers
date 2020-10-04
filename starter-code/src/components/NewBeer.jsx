@@ -1,4 +1,3 @@
-import React from "react";
 import React, { useState } from "react";
 import Axios from "axios";
 
@@ -17,7 +16,7 @@ const NewBeer = () => {
     //First, destructure the event object
     const { name, value } = e.target;
 
-    submitBeer((prevData) => {
+    setBeerData((prevData) => {
       return {
         ...prevData,
         [name]: value,
@@ -28,53 +27,60 @@ const NewBeer = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
+      let responseFromAPI = await Axios.post(
+        "https://ih-beers-api2.herokuapp.com/beers/new",
+        beerData
+      );
+      console.log(responseFromAPI);
     } catch (error) {}
   };
   return (
     <div>
-      <form onSubmit={submitBeer}>
+      <form onSubmit={onSubmitHandler}>
         <input
           name="name"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.name}
           placeholder="name"
         />
         <input
           name="tagline"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.tagline}
           placeholder="tagline"
         />
         <input
           name="description"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.description}
           placeholder="description"
         />
         <input
           name="first_brewed"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.first_brewed}
           placeholder="first_brewed"
         />
         <input
           name="brewers_tips"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.brewers_tips}
           placeholder="brewers_tips"
         />
         <input
           name="attenuation_level"
-          onChange={hadnleChange}
+          onChange={handleChange}
+          type="number"
           value={beerData.attenuation_level}
           placeholder="attenuation_level"
         />
         <input
           name="contributed_by"
-          onChange={hadnleChange}
+          onChange={handleChange}
           value={beerData.name}
           placeholder="contributed_by"
         />
+        <button type="submit">Add Beer</button>
       </form>
     </div>
   );
