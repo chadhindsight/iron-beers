@@ -17,7 +17,7 @@ const NewBeer = () => {
     //First, destructure the event object
     const { name, value } = e.target;
 
-    setBeerData((prevData) => {
+    submitBeer((prevData) => {
       return {
         ...prevData,
         [name]: value,
@@ -30,7 +30,54 @@ const NewBeer = () => {
     try {
     } catch (error) {}
   };
-  return <div></div>;
+  return (
+    <div>
+      <form onSubmit={submitBeer}>
+        <input
+          name="name"
+          onChange={hadnleChange}
+          value={beerData.name}
+          placeholder="name"
+        />
+        <input
+          name="tagline"
+          onChange={hadnleChange}
+          value={beerData.tagline}
+          placeholder="tagline"
+        />
+        <input
+          name="description"
+          onChange={hadnleChange}
+          value={beerData.description}
+          placeholder="description"
+        />
+        <input
+          name="first_brewed"
+          onChange={hadnleChange}
+          value={beerData.first_brewed}
+          placeholder="first_brewed"
+        />
+        <input
+          name="brewers_tips"
+          onChange={hadnleChange}
+          value={beerData.brewers_tips}
+          placeholder="brewers_tips"
+        />
+        <input
+          name="attenuation_level"
+          onChange={hadnleChange}
+          value={beerData.attenuation_level}
+          placeholder="attenuation_level"
+        />
+        <input
+          name="contributed_by"
+          onChange={hadnleChange}
+          value={beerData.name}
+          placeholder="contributed_by"
+        />
+      </form>
+    </div>
+  );
 };
 
 export default NewBeer;
