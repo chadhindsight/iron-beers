@@ -27,7 +27,7 @@ function App() {
       }).catch(err => console.log(err))
   }
 
-  // Pass this search logic down as props
+  // Pass this search logic down as props to another comp
   const searchHandler = async (e) => {
     await setQuery(e.target.value);
     let response = await Axios.get(
