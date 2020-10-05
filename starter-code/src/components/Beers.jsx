@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
+
 // Get info by beer ID & display the result in a new component
 function Beers(props) {
+  console.log(props.query);
   const showBeers = () => {
     return props.beers.map((eachBeer) => {
       return (
@@ -29,6 +31,12 @@ function Beers(props) {
       <Link to={`/beers/random`}>
         <button>Get a Random Beer</button>
       </Link>
+      <input
+        type="text"
+        placeholder="search for a beer"
+        value={props.query}
+        onChange={props.searchHandler}
+      />
       {props.dataReady ? showBeers() : "Loading..."}
       {/* {showBeers()} */}
     </div>
